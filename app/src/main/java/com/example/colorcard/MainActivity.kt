@@ -37,29 +37,22 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ColorCard(color: Color, label: String) {
-    Card(
+    // Using modifiers: padding, background, border, size
+    Box(
         modifier = Modifier
-            .size(width = 200.dp, height = 150.dp)
-            .padding(16.dp)
-            .background(color, RoundedCornerShape(12.dp))
-            .border(3.dp, Color.Black, RoundedCornerShape(12.dp)),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = color)
+            .size(width = 200.dp, height = 150.dp)  // size modifier
+            .padding(16.dp)  // padding modifier
+            .background(color, RoundedCornerShape(12.dp))  // background modifier
+            .border(3.dp, Color.Black, RoundedCornerShape(12.dp)),  // border modifier
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = label,
-                color = Color.White,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-        }
+        Text(
+            text = label,
+            color = Color.White,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
@@ -79,55 +72,43 @@ fun ColorCardScreen() {
             modifier = Modifier.padding(bottom = 16.dp)
         )
         
-        // First card: Red with padding and background modifiers
+        // First card: Red - Using all four modifiers in combination 1
         ColorCard(color = Color.Red, label = "Red Card")
         
-        // Second card: Blue with size and border modifiers (different combination)
-        Card(
+        // Second card: Blue - Using modifiers in combination 2 (different values)
+        Box(
             modifier = Modifier
-                .size(width = 180.dp, height = 120.dp)
-                .border(4.dp, Color.DarkGray, RoundedCornerShape(8.dp)),
-            shape = RoundedCornerShape(8.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.Blue)
+                .size(width = 180.dp, height = 120.dp)  // size modifier (different dimensions)
+                .background(Color.Blue, RoundedCornerShape(8.dp))  // background modifier
+                .border(4.dp, Color.White, RoundedCornerShape(8.dp))  // border modifier (different color/width)
+                .padding(12.dp),  // padding modifier (different value)
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Blue Card",
-                    color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-            }
+            Text(
+                text = "Blue Card",
+                color = Color.White,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
         }
         
-        // Third card: Green with all modifiers in different combination
-        Card(
+        // Third card: Green - Using modifiers in combination 3 (yet another arrangement)
+        Box(
             modifier = Modifier
-                .size(width = 220.dp, height = 160.dp)
-                .padding(24.dp)
-                .background(Color.Green, RoundedCornerShape(16.dp))
-                .border(2.dp, Color.White, RoundedCornerShape(16.dp)),
-            shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.Green)
+                .padding(24.dp)  // padding modifier (applied first)
+                .size(width = 220.dp, height = 140.dp)  // size modifier 
+                .border(2.dp, Color.Yellow, RoundedCornerShape(16.dp))  // border modifier
+                .background(Color.Green, RoundedCornerShape(16.dp)),  // background modifier
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Green Card",
-                    color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-            }
+            Text(
+                text = "Green Card",
+                color = Color.White,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
         }
     }
 }
